@@ -303,8 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ffmpegLoaded) return;
 
         try {
-            const { FFmpeg } = FFmpegWASM;
-            const { fetchFile } = FFmpegUtil;
+            // Access FFmpeg from global window object
+            const { FFmpeg } = window.FFmpegWASM || {};
+
+            if (!FFmpeg) {
+                throw new Error('FFmpeg not loaded. Please reload the page.');
+            }
 
             ffmpeg = new FFmpeg();
             ffmpeg.on('log', ({ message }) => {
@@ -316,16 +320,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             ffmpegLoaded = true;
-            console.log('FFmpeg loaded successfully');
+            console.log('✅ FFmpeg loaded successfully');
         } catch (error) {
             console.error('Failed to load FFmpeg:', error);
-            throw new Error('No se pudo cargar FFmpeg. Inténtalo de nuevo.');
+            throw new Error('No se pudo cargar FFmpeg. Por favor recarga la página.');
         }
     }
 
     async function convertWithFFmpeg(file, outputFormat) {
         return new Promise(async (resolve, reject) => {
             try {
+                // Show loading message
+                alert('Convirtiendo... Esto puede tardar unos segundos la primera vez.');
+
                 // Load FFmpeg if not loaded
                 await loadFFmpeg();
 
@@ -333,8 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const inputName = 'input.' + inputExt;
                 const outputName = file.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat;
 
+                // Get fetchFile from global
+                const { fetchFile } = window.FFmpegUtil || {};
+
+                if (!fetchFile) {
+                    throw new Error('FFmpeg utilities not loaded');
+                }
+
                 // Write input file
-                const { fetchFile } = FFmpegUtil;
                 await ffmpeg.writeFile(inputName, await fetchFile(file));
 
                 // Convert
@@ -354,9 +367,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const blob = new Blob([data.buffer], { type: mimeType });
                 saveAs(blob, outputName);
 
+                alert('✅ Conversión completada!');
                 resolve();
             } catch (error) {
                 console.error('FFmpeg conversion error:', error);
+                alert('❌ Error en la conversión: ' + error.message);
                 reject(error);
             }
         });
