@@ -249,8 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (const file of activeFiles) {
                     if (file.type.startsWith('image/') && targetFormat.startsWith('image/')) {
                         await convertImage(file, targetFormat);
+                    } else if (file.type.startsWith('audio/') || file.type.startsWith('video/')) {
+                        // Get output format from select
+                        const formatExt = targetFormat.split('/')[1] || targetFormat;
+                        await convertWithFFmpeg(file, formatExt);
                     } else {
-                        await showConversionNotAvailable(file, targetFormat);
+                        alert('Tipo de archivo no soportado para conversión');
                     }
                 }
             } catch (err) {
@@ -291,13 +295,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function showConversionNotAvailable(file, format) {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                const type = format.includes('audio') ? 'audio' : 'video';
-                alert(`⚠️ Conversión de ${type} no disponible\n\nLas conversiones de audio y video requieren librerías especializadas que no están incluidas por temas de tamaño.\n\nPuedes usar herramientas online especializadas para ${type} o software de escritorio como Handbrake o FFmpeg.`);
+    // FFmpeg instance
+    let ffmpeg = null;
+    let ffmpegLoaded = false;
+
+    async function loadFFmpeg() {
+        if (ffmpegLoaded) return;
+
+        try {
+            const { FFmpeg } = FFmpegWASM;
+            const { fetchFile } = FFmpegUtil;
+
+            ffmpeg = new FFmpeg();
+            ffmpeg.on('log', ({ message }) => {
+                console.log(message);
+            });
+
+            await ffmpeg.load({
+                coreURL: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js',
+            });
+
+            ffmpegLoaded = true;
+            console.log('FFmpeg loaded successfully');
+        } catch (error) {
+            console.error('Failed to load FFmpeg:', error);
+            throw new Error('No se pudo cargar FFmpeg. Inténtalo de nuevo.');
+        }
+    }
+
+    async function convertWithFFmpeg(file, outputFormat) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                // Load FFmpeg if not loaded
+                await loadFFmpeg();
+
+                const inputExt = file.name.split('.').pop();
+                const inputName = 'input.' + inputExt;
+                const outputName = file.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat;
+
+                // Write input file
+                const { fetchFile } = FFmpegUtil;
+                await ffmpeg.writeFile(inputName, await fetchFile(file));
+
+                // Convert
+                await ffmpeg.exec(['-i', inputName, outputName]);
+
+                // Read output
+                const data = await ffmpeg.readFile(outputName);
+
+                // Determine MIME type
+                let mimeType = 'application/octet-stream';
+                if (['mp3', 'wav', 'aac', 'flac', 'm4a'].includes(outputFormat)) {
+                    mimeType = `audio/${outputFormat === 'mp3' ? 'mpeg' : outputFormat}`;
+                } else if (['mp4', 'webm', 'avi', 'mov', 'mkv'].includes(outputFormat)) {
+                    mimeType = `video/${outputFormat}`;
+                }
+
+                const blob = new Blob([data.buffer], { type: mimeType });
+                saveAs(blob, outputName);
+
                 resolve();
-            }, 500);
+            } catch (error) {
+                console.error('FFmpeg conversion error:', error);
+                reject(error);
+            }
         });
     }
 

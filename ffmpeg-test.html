@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFmpeg.wasm Implementation</title>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/umd/ffmpeg.js"></script>
+</head>
+
+<body>
+    <script>
+        // FFmpeg.wasm - Test implementation for audio/video conversion
+        const { FFmpeg } = FFmpegWASM;
+        const ffmpeg = new FFmpeg();
+
+        async function convertVideo(file, outputFormat) {
+            try {
+                if (!ffmpeg.loaded) {
+                    await ffmpeg.load();
+                }
+
+                const inputName = 'input.' + file.name.split('.').pop();
+                const outputName = file.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat;
+
+                await ffmpeg.writeFile(inputName, await fetchFile(file));
+                await ffmpeg.exec(['-i', inputName, outputName]);
+
+                const data = await ffmpeg.readFile(outputName);
+                const blob = new Blob([data.buffer], { type: `video/${outputFormat}` });
+
+                return { blob, filename: outputName };
+            } catch (error) {
+                console.error('FFmpeg error:', error);
+                throw error;
+            }
+        }
+
+        async function convertAudio(file, outputFormat) {
+            try {
+                if (!ffmpeg.loaded) {
+                    await ffmpeg.load();
+                }
+
+                const inputName = 'input.' + file.name.split('.').pop();
+                const outputName = file.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat;
+
+                await ffmpeg.writeFile(inputName, await fetchFile(file));
+                await ffmpeg.exec(['-i', inputName, outputName]);
+
+                const data = await ffmpeg.readFile(outputName);
+                const blob = new Blob([data.buffer], { type: `audio/${outputFormat}` });
+
+                return { blob, filename: outputName };
+            } catch (error) {
+                console.error('FFmpeg error:', error);
+                throw error;
+            }
+        }
+
+        function fetchFile(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(new Uint8Array(e.target.result));
+                reader.readAsArrayBuffer(file);
+            });
+        }
+    </script>
+</body>
+
+</html>

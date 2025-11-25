@@ -30,6 +30,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/umd/ffmpeg.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7720300507466371"
@@ -65,8 +67,275 @@
                     Audio</a>
                 <a href="video.html" class="menu-item" data-i18n="menu_video"><i class="ph ph-film-strip"></i> Video</a>
 
+                <div class="menu-category">
+                    <h3>YouTube</h3>
+                </div>
+
+                <div class="menu-category">
+                    <h3 data-i18n="menu_cat_pdf">Herramientas PDF</h3>
+                    <a href="pdf-create.html" class="menu-item" data-i18n="menu_pdf_create"><i
+                            class="ph ph-file-pdf"></i> Web/Img a
+                        PDF</a>
                     <a href="pdf-compress.html" class="menu-item" data-i18n="menu_pdf_compress"><i
                             class="ph ph-file-zip"></i>
                         Comprimir PDF</a>
                 </div>
 
+                <div class="menu-category">
+                    <h3 data-i18n="menu_cat_utils">Utilidades</h3>
+                    <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear
+                        ZIP</a>
+                    <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
+                        (Img a Texto)</a>
+                    <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
+                        Generador Hash</a>
+                </div>
+            </nav>
+
+            <!-- AdSense Sidebar -->
+            <!-- DISABLED TEMPORARILY: <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7720300507466371"
+                data-ad-slot="0987654321" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+            <script>
+                // DISABLED: (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="mobile-menu-toggle">
+                    <i class="ph ph-list"></i>
+                </div>
+                <h1>Conversor Universal</h1>
+                <div class="header-actions">
+                    <button class="btn-icon"><i class="ph ph-gear"></i></button>
+                </div>
+            </header>
+
+            <!-- Ad Banner Top -->
+            <!-- DISABLED TEMPORARILY: <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7720300507466371"
+                data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+            <script>
+                // DISABLED: (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- Tool Container -->
+            <div id="tool-container" class="tool-container">
+
+                <!-- VIEW: General Converter -->
+                <div class="tool-view active" id="view-general">
+                    <div class="hero-text">
+                        <h2 data-i18n="hero_title">Transforma tus archivos <span class="text-neon">al instante.</span>
+                        </h2>
+                        <p data-i18n="hero_subtitle">Arrastra, suelta y convierte. Todo sucede en tu navegador.</p>
+                    </div>
+                    <div class="drop-zone" id="drop-zone-general">
+                        <div class="drop-content">
+                            <i class="ph ph-cloud-arrow-up icon-lg"></i>
+                            <h3 data-i18n="drop_title">Arrastra archivos aquí</h3>
+                            <p data-i18n="drop_subtitle">o haz clic para seleccionar</p>
+                            <input type="file" id="input-general" multiple hidden>
+                        </div>
+                    </div>
+                    <!-- Shared Options Panel (Moved via JS or duplicated if needed, keeping simple for now) -->
+                    <div class="options-panel hidden" id="options-general">
+                        <div class="file-preview-container" id="preview-general"></div>
+                        <div class="controls-row">
+                            <select id="format-general" class="select-neon">
+                                <option value="" disabled selected>Elegir formato...</option>
+                            </select>
+                            <button id="btn-convert-general" class="btn-neon">Convertir</button>
+                        </div>
+                    </div>
+
+                    <!-- SEO Content: General -->
+                    <section class="seo-content mt-5">
+                        <article>
+                            <h2>Conversor de Archivos Universal Online Gratis: La Solución Definitiva</h2>
+                            <p><strong>OmniShift</strong> es el <strong>convertidor de archivos online más completo y
+                                    gratuito</strong> del mercado. Olvídate de instalar programas pesados, suscripciones
+                                costosas o límites frustrantes. Nuestra plataforma centraliza todas las herramientas de
+                                conversión que necesitas en un solo lugar: <strong>imágenes, videos, audio, documentos
+                                    PDF y más</strong>.</p>
+
+                            <p>Con más de 50 formatos soportados y procesamiento 100% en tu navegador, OmniShift
+                                garantiza tu privacidad mientras ofrece velocidad y calidad profesional. Ya sea que
+                                necesites <strong>convertir JPG a PNG</strong>, <strong>MP4 a AVI</strong>, <strong>MP3
+                                    a WAV</strong> o crear archivos PDF, lo hacemos simple y rápido.</p>
+
+                            <h3>¿Por qué OmniShift es el Mejor Conversor de Archivos Online?</h3>
+                            <div class="features-grid">
+                                <div class="feature-item"><i class="ph ph-shield-check"></i>
+                                    <h4>Privacidad Total</h4>
+                                    <p>Tus archivos nunca salen de tu dispositivo. Todo se procesa localmente en tu
+                                        navegador.</p>
+                                </div>
+                                <div class="feature-item"><i class="ph ph-lightning"></i>
+                                    <h4>Velocidad Instantánea</h4>
+                                    <p>Sin colas ni tiempos de espera. Conversión en tiempo real sin servidores lentos.
+                                    </p>
+                                </div>
+                                <div class="feature-item"><i class="ph ph-infinity"></i>
+                                    <h4>Sin Límites</h4>
+                                    <p>Convierte archivos ilimitados. Sin restricciones de tamaño ni cantidad diaria.
+                                    </p>
+                                </div>
+                                <div class="feature-item"><i class="ph ph-currency-dollar-simple"></i>
+                                    <h4>100% Gratis</h4>
+                                    <p>Todas las funciones disponibles sin costo. Sin anuncios molestos ni
+                                        suscripciones.</p>
+                                </div>
+                                <div class="feature-item"><i class="ph ph-devices"></i>
+                                    <h4>Multiplataforma</h4>
+                                    <p>Funciona en Windows, Mac, Linux, Android e iOS. Solo necesitas un navegador.</p>
+                                </div>
+                                <div class="feature-item"><i class="ph ph-lock"></i>
+                                    <h4>Seguro y Confiable</h4>
+                                    <p>Sin malware, sin virus. Código abierto y transparente.</p>
+                                </div>
+                            </div>
+
+                            <h3>Formatos Soportados por Categoría</h3>
+                            <p>Nuestro <strong>conversor universal de archivos</strong> soporta los formatos más
+                                populares:</p>
+
+                            <h4>📸 Imágenes</h4>
+                            <ul class="seo-list">
+                                <li><strong>JPG/JPEG:</strong> El formato más usado para fotografías digitales</li>
+                                <li><strong>PNG:</strong> Ideal para imágenes con transparencia y gráficos web</li>
+                                <li><strong>WEBP:</strong> Formato moderno de Google con mejor compresión</li>
+                                <li><strong>GIF:</strong> Perfecto para animaciones simples</li>
+                            </ul>
+
+                            <h4>🎬 Videos</h4>
+                            <ul class="seo-list">
+                                <li><strong>MP4:</strong> Compatible con todos los dispositivos y plataformas</li>
+                                <li><strong>WEBM:</strong> Optimizado para web y streaming</li>
+                                <li><strong>MKV:</strong> Alta calidad con múltiples pistas de audio</li>
+                                <li><strong>MOV:</strong> Formato nativo de Apple QuickTime</li>
+                                <li><strong>AVI:</strong> Clásico compatible con reproductores antiguos</li>
+                            </ul>
+
+                            <h4>🎵 Audio</h4>
+                            <ul class="seo-list">
+                                <li><strong>MP3:</strong> El estándar universal para música digital</li>
+                                <li><strong>WAV:</strong> Calidad sin pérdida para profesionales</li>
+                                <li><strong>AAC:</strong> Mejor calidad que MP3 a mismo bitrate</li>
+                                <li><strong>FLAC:</strong> Audio sin pérdida con compresión</li>
+                            </ul>
+
+                            <h3>Casos de Uso Comunes</h3>
+                            <ol class="seo-list">
+                                <li><strong>Diseñadores Gráficos:</strong> Convierte imágenes entre formatos para
+                                    diferentes proyectos y plataformas.</li>
+                                <li><strong>Creadores de Contenido:</strong> Optimiza videos y audio para YouTube,
+                                    TikTok, Instagram.</li>
+                                <li><strong>Estudiantes:</strong> Convierte documentos y presentaciones a PDF para
+                                    entregas.</li>
+                                <li><strong>Fotógrafos:</strong> Procesa lotes de fotos RAW a JPG o PNG.</li>
+                                <li><strong>Músicos:</strong> Convierte grabaciones a diferentes formatos para
+                                    distribución.</li>
+                                <li><strong>Empresas:</strong> Estandariza formatos de archivos para compatibilidad
+                                    interna.</li>
+                            </ol>
+
+                            <h3>Preguntas Frecuentes</h3>
+
+                            <div class="faq-item">
+                                <h4>¿Es realmente gratis?</h4>
+                                <p>Sí, 100% gratis. No hay costos ocultos, suscripciones ni límites de uso. Todas las
+                                    funciones están disponibles sin restricciones.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h4>¿Mis archivos están seguros?</h4>
+                                <p>Absolutamente. Todos los archivos se procesan localmente en tu navegador. Nunca se
+                                    suben a nuestros servidores, garantizando tu privacidad total.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h4>¿Hay límite de tamaño de archivo?</h4>
+                                <p>El único límite es la memoria RAM de tu dispositivo. Generalmente puedes procesar
+                                    archivos de varios GB sin problemas.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h4>¿Necesito instalar algo?</h4>
+                                <p>No. OmniShift funciona completamente en tu navegador web. Compatible con Chrome,
+                                    Firefox, Safari, Edge y más.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h4>¿Puedo convertir múltiples archivos a la vez?</h4>
+                                <p>Sí, soportamos conversión por lotes. Selecciona todos los archivos que necesites y
+                                    conviértelos simultáneamente.</p>
+                            </div>
+
+                            <h3>Cómo Usar el Conversor Universal</h3>
+                            <ol class="seo-list">
+                                <li><strong>Selecciona tu herramienta:</strong> Elige entre Imágenes, Audio, Video, PDF
+                                    u otras utilidades del menú lateral.</li>
+                                <li><strong>Arrastra tus archivos:</strong> Suelta los archivos en la zona de carga o
+                                    haz clic para seleccionarlos.</li>
+                                <li><strong>Elige el formato:</strong> Selecciona el formato de salida deseado del menú
+                                    desplegable.</li>
+                                <li><strong>Convierte y descarga:</strong> Haz clic en "Convertir" y descarga tus
+                                    archivos procesados.</li>
+                            </ol>
+
+                            <p
+                                style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-card); border-left: 4px solid var(--primary); border-radius: 8px;">
+                                <strong>💡 Consejo Pro:</strong> Para mejores resultados, usa archivos de alta calidad
+                                como entrada. La conversión preserva la calidad original, pero no puede mejorar archivos
+                                de baja resolución.
+                            </p>
+                        </article>
+                    </section>
+                </div>
+
+
+
+            </div>
+
+            <!-- Settings Modal -->
+            <div id="settings-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Ajustes</h3>
+                        <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="setting-item">
+                            <label>Idioma / Language</label>
+                            <select id="language-select" class="select-neon">
+                                <option value="es">Español</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Banner Bottom -->
+            <!-- DISABLED TEMPORARILY: <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7720300507466371"
+                data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+            <script>
+                // DISABLED: (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <footer class="main-footer">
+                <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
+                <div class="footer-links">
+                    <a href="privacy.html" id="link-privacy">Privacidad</a>
+                    <a href="terms.html" id="link-terms">Términos</a>
+                    <a href="contact.html" id="link-contact">Contacto</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
