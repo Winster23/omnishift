@@ -23,29 +23,31 @@ exports.handler = async (event, context) => {
     }
 
     const info = await ytdl.getInfo(url);
-    const title = info.videoDetails.title.replace(/[^\w\s]/gi, '');
 
-    let downloadOptions = {};
-    
+    let format;
+
     if (quality === 'audio') {
-      downloadOptions = { filter: 'audioonly', quality: 'highestaudio' };
+      // Solo audio
+      const audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
+      format = ytdl.chooseFormat(audioFormats, { quality: 'highestaudio' });
     } else if (quality && quality !== 'highest') {
+      // Calidad específica
       const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
       const selectedFormat = formats.find(f => f.qualityLabel === quality);
+
       if (selectedFormat) {
-        downloadOptions = { quality: selectedFormat.itag };
+        format = selectedFormat;
       } else {
-        downloadOptions = { quality: 'highestvideo', filter: 'videoandaudio' };
+        // Fallback a mejor calidad disponible
+        format = ytdl.chooseFormat(info.formats, { quality: 'highestvideo' });
       }
     } else {
-      downloadOptions = { quality: 'highestvideo', filter: 'videoandaudio' };
+      // Mejor calidad por defecto
+      format = ytdl.chooseFormat(info.formats, { quality: 'highestvideo' });
     }
 
-    // Note: Netlify functions have size/time limits
-    // For production, consider using a redirect to the video URL
-    const formats = await ytdl.getInfo(url);
-    const format = ytdl.chooseFormat(formats.formats, downloadOptions);
-    
+    // Redirigir directamente a la URL del video
+    // Netlify functions tienen límite de tamaño, mejor redirigir
     return {
       statusCode: 302,
       headers: {
@@ -59,9 +61,9 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         error: 'Error al descargar el video',
-        details: error.message 
+        details: error.message
       })
     };
   }
