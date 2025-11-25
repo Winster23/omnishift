@@ -275,15 +275,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0);
 
-                    const extMap = {
-                        'image/jpeg': 'jpg',
-                        'image/png': 'png',
-                        'image/webp': 'webp',
-                        'image/gif': 'gif'
-                    };
-
                     canvas.toBlob((blob) => {
-                        saveAs(blob, `converted.${extMap[format] || 'img'}`);
+                        if (!blob) return;
+                        const extMap = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
+                        // Use original filename without extension + new extension
+                        const originalName = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
+                        const newExtension = extMap[format] || 'img';
+                        saveAs(blob, `${originalName}.${newExtension}`);
                         resolve();
                     }, format);
                 };
