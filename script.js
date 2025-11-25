@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (file.type.startsWith('image/') && targetFormat.startsWith('image/')) {
                         await convertImage(file, targetFormat);
                     } else {
-                        await simulateConversion(file, targetFormat);
+                        await showConversionNotAvailable(file, targetFormat);
                     }
                 }
             } catch (err) {
@@ -291,13 +291,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function simulateConversion(file, format) {
+    function showConversionNotAvailable(file, format) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                const ext = format.split('/')[1] || format;
-                alert(`Simulación: ${file.name} convertido a ${ext.toUpperCase()}. (Requiere Backend/WASM completo)`);
+                const type = format.includes('audio') ? 'audio' : 'video';
+                alert(`⚠️ Conversión de ${type} no disponible\n\nLas conversiones de audio y video requieren librerías especializadas que no están incluidas por temas de tamaño.\n\nPuedes usar herramientas online especializadas para ${type} o software de escritorio como Handbrake o FFmpeg.`);
                 resolve();
-            }, 1000);
+            }, 500);
         });
     }
 
