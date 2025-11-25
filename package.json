@@ -1,27 +1,11 @@
 {
-    "name": "omnishift-converter",
-    "version": "1.0.0",
-    "description": "OmniShift - Conversor Universal de Archivos con YouTube Downloader",
-    "main": "server.js",
-    "scripts": {
-        "start": "node server.js",
-        "dev": "nodemon server.js"
-    },
-    "keywords": [
-        "file-converter",
-        "youtube-downloader",
-        "video-converter",
-        "image-converter"
-    ],
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "express": "^4.18.2",
-        "cors": "^2.8.5",
-        "@distube/ytdl-core": "^4.14.4",
-        "express-rate-limit": "^7.1.5"
-    },
-    "devDependencies": {
-        "nodemon": "^3.0.2"
-    }
+  "name": "omnishift",
+  "version": "1.0.0",
+  "description": "Conversor Universal de Archivos",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@distube/ytdl-core": "^4.14.4"
+  }
 }
