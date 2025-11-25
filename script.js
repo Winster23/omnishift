@@ -273,21 +273,49 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = (e) => {
                 const img = new Image();
                 img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
+                    // Show progress
+                    progressIndicator.show(file.name);
 
-                    canvas.toBlob((blob) => {
-                        if (!blob) return;
-                        const extMap = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
-                        // Use original filename without extension + new extension
-                        const originalName = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
-                        const newExtension = extMap[format] || 'img';
-                        saveAs(blob, `${originalName}.${newExtension}`);
-                        resolve();
-                    }, format);
+                    // Simulate progress
+                    let progress = 0;
+                    const progressTimer = setInterval(() => {
+                        progress += 10;
+                        progressIndicator.update(progress, 'Convirtiendo imagen...', file.name);
+
+                        if (progress >= 90) {
+                            clearInterval(progressTimer);
+
+                            // Do actual conversion
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0);
+
+                            const quality = getConversionQuality();
+                            canvas.toBlob((blob) => {
+                                if (!blob) {
+                                    progressIndicator.hide();
+                                    resolve();
+                                    return;
+                                }
+
+                                const extMap = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
+                                const originalName = file.name.replace(/\.[^/.]+$/, "");
+                                const newExtension = extMap[format] || 'img';
+
+                                // Update to 100%
+                                progressIndicator.update(100, '¡Completado!', file.name);
+
+                                // Auto-download after brief delay
+                                setTimeout(() => {
+                                    saveAs(blob, `${originalName}.${newExtension}`);
+                                    progressIndicator.hide();
+                                    resolve();
+                                }, 500);
+                            }, format, quality);
+                        }
+                    }, 100);
                 };
                 img.src = e.target.result;
             };
@@ -467,31 +495,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('omnishift_theme') || 'dark';
         themeSelect.value = savedTheme;
         document.documentElement.className = savedTheme;
-        
+
         themeSelect.addEventListener('change', (e) => {
             const theme = e.target.value;
             document.documentElement.className = theme;
             localStorage.setItem('omnishift_theme', theme);
         });
     }
-    
+
     // Quality setting
     const qualitySelect = document.getElementById('quality-select');
     if (qualitySelect) {
         const savedQuality = localStorage.getItem('omnishift_quality') || 'high';
         qualitySelect.value = savedQuality;
-        
+
         qualitySelect.addEventListener('change', (e) => {
             localStorage.setItem('omnishift_quality', e.target.value);
         });
     }
-    
+
     // Auto-download toggle
     const autodownloadToggle = document.getElementById('autodownload-toggle');
     if (autodownloadToggle) {
         const savedAutoDownload = localStorage.getItem('omnishift_autodownload') === 'true';
         autodownloadToggle.checked = savedAutoDownload;
-        
+
         autodownloadToggle.addEventListener('change', (e) => {
             localStorage.setItem('omnishift_autodownload', e.target.checked);
         });
@@ -512,4 +540,95 @@ function getConversionQuality() {
 // Helper to check auto-download setting
 function shouldAutoDownload() {
     return localStorage.getItem('omnishift_autodownload') === 'true';
+}
+
+// Circular Progress Indicator
+class CircularProgress {
+    constructor() {
+        this.overlay = null;
+        this.circle = null;
+        this.percentage = null;
+        this.text = null;
+        this.filename = null;
+    }
+
+    show(fileName = '') {
+        if (this.overlay) return; // Already showing
+
+        this.overlay = document.createElement('div');
+        this.overlay.className = 'progress-overlay';
+        this.overlay.innerHTML = `
+            <div class="progress-container">
+                <div class="circular-progress">
+                    <svg width="150" height="150">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B5CF6"/>
+                                <stop offset="100%" style="stop-color:#06B6D4"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="bg-circle" cx="75" cy="75" r="65"></circle>
+                        <circle class="progress-circle" cx="75" cy="75" r="65" 
+                                stroke-dasharray="408.4" stroke-dashoffset="408.4"></circle>
+                    </svg>
+                    <div class="progress-percentage">0%</div>
+                </div>
+                <div class="progress-text">Convirtiendo...</div>
+                <div class="progress-filename">${fileName}</div>
+            </div>
+        `;
+
+        document.body.appendChild(this.overlay);
+        this.circle = this.overlay.querySelector('.progress-circle');
+        this.percentage = this.overlay.querySelector('.progress-percentage');
+        this.text = this.overlay.querySelector('.progress-text');
+        this.filename = this.overlay.querySelector('.progress-filename');
+    }
+
+    update(percent, text = null, fileName = null) {
+        if (!this.overlay) return;
+
+        const circumference = 408.4;
+        const offset = circumference - (percent / 100) * circumference;
+
+        this.circle.style.strokeDashoffset = offset;
+        this.percentage.textContent = Math.round(percent) + '%';
+
+        if (text) this.text.textContent = text;
+        if (fileName) this.filename.textContent = fileName;
+    }
+
+    hide() {
+        if (this.overlay) {
+            this.overlay.remove();
+            this.overlay = null;
+            this.circle = null;
+            this.percentage = null;
+            this.text = null;
+            this.filename = null;
+        }
+    }
+}
+
+const progressIndicator = new CircularProgress();
+
+// Simulate progress for synchronous operations
+function simulateProgress(duration, onProgress, onComplete) {
+    const steps = 100;
+    const interval = duration / steps;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+        currentStep++;
+        const percent = currentStep;
+
+        if (onProgress) onProgress(percent);
+
+        if (currentStep >= steps) {
+            clearInterval(timer);
+            if (onComplete) onComplete();
+        }
+    }, interval);
+
+    return timer;
 }

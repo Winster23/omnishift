@@ -879,3 +879,78 @@ input:checked + .toggle-slider:before {
 .legal-content a:hover {
     text-decoration: underline;
 }
+
+/* Circular Progress Indicator */
+.progress-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.progress-container {
+    text-align: center;
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 2px solid var(--primary);
+}
+
+.circular-progress {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+}
+
+.circular-progress svg {
+    transform: rotate(-90deg);
+}
+
+.circular-progress circle {
+    fill: none;
+    stroke-width: 8;
+}
+
+.circular-progress .bg-circle {
+    stroke: var(--border);
+}
+
+.circular-progress .progress-circle {
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-text {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.progress-filename {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
