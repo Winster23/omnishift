@@ -302,16 +302,41 @@
             <div id="settings-modal" class="modal hidden">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Ajustes</h3>
+                        <h3 data-i18n="settings_title">Ajustes</h3>
                         <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
                     </div>
                     <div class="modal-body">
                         <div class="setting-item">
-                            <label>Idioma / Language</label>
+                            <label data-i18n="settings_language">Idioma / Language</label>
                             <select id="language-select" class="select-neon">
                                 <option value="es">Español</option>
                                 <option value="en">English</option>
                             </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <label data-i18n="settings_theme">Tema</label>
+                            <select id="theme-select" class="select-neon">
+                                <option value="dark" data-i18n="settings_theme_dark">Oscuro</option>
+                                <option value="light" data-i18n="settings_theme_light">Claro</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <label data-i18n="settings_quality">Calidad de Conversión</label>
+                            <select id="quality-select" class="select-neon">
+                                <option value="high" data-i18n="settings_quality_high">Alta (95%)</option>
+                                <option value="medium" data-i18n="settings_quality_medium">Media (85%)</option>
+                                <option value="low" data-i18n="settings_quality_low">Baja (70%)</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <label data-i18n="settings_autodownload">Descarga Automática</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="autodownload-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
                 </div>

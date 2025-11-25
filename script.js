@@ -458,3 +458,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// Settings handlers
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        const savedTheme = localStorage.getItem('omnishift_theme') || 'dark';
+        themeSelect.value = savedTheme;
+        document.documentElement.className = savedTheme;
+        
+        themeSelect.addEventListener('change', (e) => {
+            const theme = e.target.value;
+            document.documentElement.className = theme;
+            localStorage.setItem('omnishift_theme', theme);
+        });
+    }
+    
+    // Quality setting
+    const qualitySelect = document.getElementById('quality-select');
+    if (qualitySelect) {
+        const savedQuality = localStorage.getItem('omnishift_quality') || 'high';
+        qualitySelect.value = savedQuality;
+        
+        qualitySelect.addEventListener('change', (e) => {
+            localStorage.setItem('omnishift_quality', e.target.value);
+        });
+    }
+    
+    // Auto-download toggle
+    const autodownloadToggle = document.getElementById('autodownload-toggle');
+    if (autodownloadToggle) {
+        const savedAutoDownload = localStorage.getItem('omnishift_autodownload') === 'true';
+        autodownloadToggle.checked = savedAutoDownload;
+        
+        autodownloadToggle.addEventListener('change', (e) => {
+            localStorage.setItem('omnishift_autodownload', e.target.checked);
+        });
+    }
+});
+
+// Helper to get conversion quality
+function getConversionQuality() {
+    const quality = localStorage.getItem('omnishift_quality') || 'high';
+    const qualityMap = {
+        high: 0.95,
+        medium: 0.85,
+        low: 0.70
+    };
+    return qualityMap[quality] || 0.95;
+}
+
+// Helper to check auto-download setting
+function shouldAutoDownload() {
+    return localStorage.getItem('omnishift_autodownload') === 'true';
+}
