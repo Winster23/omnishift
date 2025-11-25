@@ -32,12 +32,11 @@
 </head>
 
 <body>
-
     <div class="app-layout">
-        <!-- Sidebar Menu -->
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo">
+            <div class="logo">
+                <div class="logo-icon">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 2L2 9L16 16L30 9L16 2Z" stroke="#8B5CF6" stroke-width="2"
                             stroke-linejoin="round" />
@@ -47,8 +46,8 @@
                         <path d="M16 16V30" stroke="white" stroke-width="2" stroke-linejoin="round" />
                     </svg>
                     <span>OmniShift</span>
-            
-        
+                </div>
+            </div>
 
             <nav class="menu">
                 <h3 data-i18n="menu_cat_converter">Conversor</h3>
@@ -60,7 +59,7 @@
                     Audio</a>
                 <a href="video.html" class="menu-item" data-i18n="menu_video"><i class="ph ph-film-strip"></i> Video</a>
 
-        <div class="menu-category">
+                <div class="menu-category">
                     <h3 data-i18n="menu_cat_pdf">Herramientas PDF</h3>
                     <a href="pdf-create.html" class="menu-item" data-i18n="menu_pdf_create"><i
                             class="ph ph-file-pdf"></i> Web/Img a
@@ -68,152 +67,156 @@
                     <a href="pdf-compress.html" class="menu-item" data-i18n="menu_pdf_compress"><i
                             class="ph ph-file-zip"></i>
                         Comprimir PDF</a>
-            
 
 
 
-    <div class="menu-category">
-        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
-        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear ZIP</a>
-        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
-            (Img a Texto)</a>
-        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
-            Generador Hash</a>
 
-    </nav>
+                    <div class="menu-category">
+                        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
+                        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear
+                            ZIP</a>
+                        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
+                            (Img a Texto)</a>
+                        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
+                            Generador Hash</a>
 
-    <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
-        <span>Anuncio</span>
+            </nav>
 
-    </aside>
+            <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
+                <span>Anuncio</span>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Header -->
-        <header class="top-header">
-            <div class="mobile-menu-toggle">
-                <i class="ph ph-list"></i>
-        
-            <h1>Conversor Universal</h1>
-            <div class="header-actions">
-                <button class="btn-icon"><i class="ph ph-gear"></i></button>
-        
-        </header>
+        </aside>
 
-        <!-- Ad Banner Top -->
-        <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
-            <span>Espacio Publicitario</span>
-    
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="mobile-menu-toggle">
+                    <i class="ph ph-list"></i>
 
-        <!-- Tool Container -->
-        <div id="tool-container" class="tool-container">
+                    <h1>Conversor Universal</h1>
+                    <div class="header-actions">
+                        <button class="btn-icon"><i class="ph ph-gear"></i></button>
+
+            </header>
+
+            <!-- Ad Banner Top -->
+            <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
+                <span>Espacio Publicitario</span>
 
 
-
-            <!-- VIEW: Privacy Policy -->
-            <div class="tool-view active" id="view-privacy">
-                <div class="legal-content">
-                    <h2>Política de Privacidad</h2>
-                    <p><em>Última actualización: Noviembre 2025</em></p>
-
-                    <h3>1. Procesamiento Local de Archivos</h3>
-                    <p><strong>OmniShift procesa TODOS tus archivos localmente en tu navegador.</strong> Esto significa
-                        que:</p>
-                    <ul>
-                        <li>Tus archivos NUNCA se suben a nuestros servidores</li>
-                        <li>No almacenamos, guardamos ni tenemos acceso a tus archivos</li>
-                        <li>Todo el procesamiento ocurre en tu dispositivo</li>
-                        <li>Cuando cierras la pestaña, todo se borra automáticamente</li>
-                    </ul>
-
-                    <h3>2. Información que Recopilamos</h3>
-                    <p><strong>No recopilamos información personal.</strong> Solo utilizamos:</p>
-                    <ul>
-                        <li><strong>localStorage</strong>: Para guardar tus preferencias de idioma y tema</li>
-                        <li><strong>Cookies analíticas</strong>: Para entender el uso general del sitio (Google
-                            Analytics)</li>
-                    </ul>
-
-                    <h3>3. Datos Almacenados Localmente</h3>
-                    <p>La siguiente información se guarda solo en tu navegador:</p>
-                    <ul>
-                        <li>Preferencia de idioma (ES/EN)</li>
-                        <li>Tema visual (oscuro/claro)</li>
-                        <li>Configuración de calidad</li>
-                        <li>Opción de descarga automática</li>
-                    </ul>
-                    <p>Puedes borrar esta información en cualquier momento desde la configuración de tu navegador.</p>
-
-                    <h3>4. Servicios de Terceros</h3>
-                    <p>Utilizamos:</p>
-                    <ul>
-                        <li><strong>Google Analytics</strong>: Para estadísticas anónimas de uso</li>
-                        <li><strong>Google AdSense</strong>: Para mostrar anuncios relevantes</li>
-                        <li><strong>CDN públicos</strong>: Para cargar librerías (FFmpeg, Tesseract, etc.)</li>
-                    </ul>
-
-                    <h3>5. Seguridad</h3>
-                    <p>Como todo se procesa localmente, tu seguridad depende de:</p>
-                    <ul>
-                        <li>La seguridad de tu navegador</li>
-                        <li>Conexión HTTPS (cifrada)</li>
-                        <li>Actualizaciones regulares de tu navegador</li>
-                    </ul>
-
-                    <h3>6. Tus Derechos (GDPR)</h3>
-                    <p>Tienes derecho a:</p>
-                    <ul>
-                        <li>Borrar tus preferencias almacenadas</li>
-                        <li>Rechazar cookies analíticas</li>
-                        <li>Solicitar información sobre datos recopilados</li>
-                    </ul>
-
-                    <h3>7. Contacto</h3>
-                    <p>Para preguntas sobre privacidad: <strong>privacy@omnishift.app</strong></p>
-            
-        
+                <!-- Tool Container -->
+                <div id="tool-container" class="tool-container">
 
 
 
-    
+                    <!-- VIEW: Privacy Policy -->
+                    <div class="tool-view active" id="view-privacy">
+                        <div class="legal-content">
+                            <h2>Política de Privacidad</h2>
+                            <p><em>Última actualización: Noviembre 2025</em></p>
 
-        <!-- Settings Modal -->
-        <div id="settings-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Ajustes</h3>
-                    <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
-            
-                <div class="modal-body">
-                    <div class="setting-item">
-                        <label>Idioma / Language</label>
-                        <select id="language-select" class="select-neon">
-                            <option value="es">Español</option>
-                            <option value="en">English</option>
-                        </select>
-                
-            
-        
-    
+                            <h3>1. Procesamiento Local de Archivos</h3>
+                            <p><strong>OmniShift procesa TODOS tus archivos localmente en tu navegador.</strong> Esto
+                                significa
+                                que:</p>
+                            <ul>
+                                <li>Tus archivos NUNCA se suben a nuestros servidores</li>
+                                <li>No almacenamos, guardamos ni tenemos acceso a tus archivos</li>
+                                <li>Todo el procesamiento ocurre en tu dispositivo</li>
+                                <li>Cuando cierras la pestaña, todo se borra automáticamente</li>
+                            </ul>
 
-        <!-- Ad Banner Bottom -->
-        <div class="ad-placeholder ad-banner-bottom" title="Anuncio Banner Inferior">
-            <span>Espacio Publicitario</span>
-    
+                            <h3>2. Información que Recopilamos</h3>
+                            <p><strong>No recopilamos información personal.</strong> Solo utilizamos:</p>
+                            <ul>
+                                <li><strong>localStorage</strong>: Para guardar tus preferencias de idioma y tema</li>
+                                <li><strong>Cookies analíticas</strong>: Para entender el uso general del sitio (Google
+                                    Analytics)</li>
+                            </ul>
 
-        <footer class="main-footer">
-            <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
-            <div class="footer-links">
-                <a href="privacy.html" id="link-privacy">Privacidad</a>
-                <a href="terms.html" id="link-terms">Términos</a>
-                <a href="contact.html" id="link-contact">Contacto</a>
-        
-        </footer>
-    </main>
+                            <h3>3. Datos Almacenados Localmente</h3>
+                            <p>La siguiente información se guarda solo en tu navegador:</p>
+                            <ul>
+                                <li>Preferencia de idioma (ES/EN)</li>
+                                <li>Tema visual (oscuro/claro)</li>
+                                <li>Configuración de calidad</li>
+                                <li>Opción de descarga automática</li>
+                            </ul>
+                            <p>Puedes borrar esta información en cualquier momento desde la configuración de tu
+                                navegador.</p>
+
+                            <h3>4. Servicios de Terceros</h3>
+                            <p>Utilizamos:</p>
+                            <ul>
+                                <li><strong>Google Analytics</strong>: Para estadísticas anónimas de uso</li>
+                                <li><strong>Google AdSense</strong>: Para mostrar anuncios relevantes</li>
+                                <li><strong>CDN públicos</strong>: Para cargar librerías (FFmpeg, Tesseract, etc.)</li>
+                            </ul>
+
+                            <h3>5. Seguridad</h3>
+                            <p>Como todo se procesa localmente, tu seguridad depende de:</p>
+                            <ul>
+                                <li>La seguridad de tu navegador</li>
+                                <li>Conexión HTTPS (cifrada)</li>
+                                <li>Actualizaciones regulares de tu navegador</li>
+                            </ul>
+
+                            <h3>6. Tus Derechos (GDPR)</h3>
+                            <p>Tienes derecho a:</p>
+                            <ul>
+                                <li>Borrar tus preferencias almacenadas</li>
+                                <li>Rechazar cookies analíticas</li>
+                                <li>Solicitar información sobre datos recopilados</li>
+                            </ul>
+
+                            <h3>7. Contacto</h3>
+                            <p>Para preguntas sobre privacidad: <strong>privacy@omnishift.app</strong></p>
 
 
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+
+
+
+
+
+                            <!-- Settings Modal -->
+                            <div id="settings-modal" class="modal hidden">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3>Ajustes</h3>
+                                        <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
+
+                                        <div class="modal-body">
+                                            <div class="setting-item">
+                                                <label>Idioma / Language</label>
+                                                <select id="language-select" class="select-neon">
+                                                    <option value="es">Español</option>
+                                                    <option value="en">English</option>
+                                                </select>
+
+
+
+
+
+                                                <!-- Ad Banner Bottom -->
+                                                <div class="ad-placeholder ad-banner-bottom"
+                                                    title="Anuncio Banner Inferior">
+                                                    <span>Espacio Publicitario</span>
+
+
+                                                    <footer class="main-footer">
+                                                        <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
+                                                        <div class="footer-links">
+                                                            <a href="privacy.html" id="link-privacy">Privacidad</a>
+                                                            <a href="terms.html" id="link-terms">Términos</a>
+                                                            <a href="contact.html" id="link-contact">Contacto</a>
+
+                                                    </footer>
+        </main>
+
+
+        <script src="translations.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

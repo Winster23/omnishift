@@ -358,8 +358,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function convertWithFFmpeg(file, outputFormat) {
         return new Promise(async (resolve, reject) => {
             try {
-                // Show loading message
-                alert('Convirtiendo... Esto puede tardar unos segundos la primera vez.');
+                // Show progress
+                progressIndicator.show(file.name);
+                progressIndicator.update(0, 'Iniciando FFmpeg...', file.name);
 
                 // Load FFmpeg if not loaded
                 await loadFFmpeg();
@@ -378,6 +379,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Write input file
                 await ffmpeg.writeFile(inputName, await fetchFile(file));
 
+                // Track progress
+                ffmpeg.on('progress', ({ progress, time }) => {
+                    const percent = Math.round(progress * 100);
+                    progressIndicator.update(percent, 'Convirtiendo...', file.name);
+                });
+
                 // Convert
                 await ffmpeg.exec(['-i', inputName, outputName]);
 
@@ -393,12 +400,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const blob = new Blob([data.buffer], { type: mimeType });
-                saveAs(blob, outputName);
 
-                alert('✅ Conversión completada!');
-                resolve();
+                // Update to 100%
+                progressIndicator.update(100, '¡Completado!', file.name);
+
+                // Auto-download logic
+                if (shouldAutoDownload()) {
+                    setTimeout(() => {
+                        saveAs(blob, outputName);
+                        progressIndicator.hide();
+                        resolve();
+                    }, 500);
+                } else {
+                    // If auto-download is off, we still save it because the user clicked convert
+                    // But maybe we should respect the setting? 
+                    // The prompt said "una vez llegue al 100% el archivo convertido se descargara automaticamente"
+                    // So I will enforce auto-download always for now as per request, or use the setting if I want to be strict.
+                    // The user said "el archivo convertido se descargara automaticamente", implying always.
+                    // But I implemented a setting. I'll respect the setting but default to true if not set?
+                    // Actually, the user's latest prompt says "una vez llegue al 100%... se descargara automaticamente".
+                    // I will just saveAs always at 100%.
+                    setTimeout(() => {
+                        saveAs(blob, outputName);
+                        progressIndicator.hide();
+                        resolve();
+                    }, 500);
+                }
             } catch (error) {
                 console.error('FFmpeg conversion error:', error);
+                progressIndicator.hide();
                 alert('❌ Error en la conversión: ' + error.message);
                 reject(error);
             }
@@ -476,12 +506,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnCreateZip) {
         btnCreateZip.addEventListener('click', async () => {
+            if (zipFilesList.length === 0) return alert('Añade archivos primero');
+
+            progressIndicator.show('archivo_comprimido.zip');
+
             const zip = new JSZip();
             zipFilesList.forEach(file => {
                 zip.file(file.name, file);
             });
-            const content = await zip.generateAsync({ type: "blob" });
-            saveAs(content, "archivo_comprimido.zip");
+
+            try {
+                const content = await zip.generateAsync({
+                    type: "blob",
+                    onUpdate: function (metadata) {
+                        progressIndicator.update(metadata.percent, 'Comprimiendo...', 'archivo_comprimido.zip');
+                    }
+                });
+
+                progressIndicator.update(100, '¡Completado!', 'archivo_comprimido.zip');
+
+                setTimeout(() => {
+                    saveAs(content, "archivo_comprimido.zip");
+                    progressIndicator.hide();
+                }, 500);
+            } catch (err) {
+                console.error(err);
+                progressIndicator.hide();
+                alert('Error al crear ZIP');
+            }
         });
     }
 });

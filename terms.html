@@ -31,12 +31,11 @@
 </head>
 
 <body>
-
     <div class="app-layout">
-        <!-- Sidebar Menu -->
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo">
+            <div class="logo">
+                <div class="logo-icon">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 2L2 9L16 16L30 9L16 2Z" stroke="#8B5CF6" stroke-width="2"
                             stroke-linejoin="round" />
@@ -46,8 +45,8 @@
                         <path d="M16 16V30" stroke="white" stroke-width="2" stroke-linejoin="round" />
                     </svg>
                     <span>OmniShift</span>
-            
-        
+                </div>
+            </div>
 
             <nav class="menu">
                 <h3 data-i18n="menu_cat_converter">Conversor</h3>
@@ -59,7 +58,7 @@
                     Audio</a>
                 <a href="video.html" class="menu-item" data-i18n="menu_video"><i class="ph ph-film-strip"></i> Video</a>
 
-        <div class="menu-category">
+                <div class="menu-category">
                     <h3 data-i18n="menu_cat_pdf">Herramientas PDF</h3>
                     <a href="pdf-create.html" class="menu-item" data-i18n="menu_pdf_create"><i
                             class="ph ph-file-pdf"></i> Web/Img a
@@ -67,156 +66,161 @@
                     <a href="pdf-compress.html" class="menu-item" data-i18n="menu_pdf_compress"><i
                             class="ph ph-file-zip"></i>
                         Comprimir PDF</a>
-            
 
 
 
-    <div class="menu-category">
-        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
-        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear ZIP</a>
-        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
-            (Img a Texto)</a>
-        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
-            Generador Hash</a>
 
-    </nav>
+                    <div class="menu-category">
+                        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
+                        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear
+                            ZIP</a>
+                        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
+                            (Img a Texto)</a>
+                        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
+                            Generador Hash</a>
 
-    <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
-        <span>Anuncio</span>
+            </nav>
 
-    </aside>
+            <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
+                <span>Anuncio</span>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Header -->
-        <header class="top-header">
-            <div class="mobile-menu-toggle">
-                <i class="ph ph-list"></i>
-        
-            <h1>Conversor Universal</h1>
-            <div class="header-actions">
-                <button class="btn-icon"><i class="ph ph-gear"></i></button>
-        
-        </header>
+        </aside>
 
-        <!-- Ad Banner Top -->
-        <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
-            <span>Espacio Publicitario</span>
-    
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="mobile-menu-toggle">
+                    <i class="ph ph-list"></i>
 
-        <!-- Tool Container -->
-        <div id="tool-container" class="tool-container">
+                    <h1>Conversor Universal</h1>
+                    <div class="header-actions">
+                        <button class="btn-icon"><i class="ph ph-gear"></i></button>
+
+            </header>
+
+            <!-- Ad Banner Top -->
+            <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
+                <span>Espacio Publicitario</span>
 
 
-
-            <!-- VIEW: Terms -->
-            <div class="tool-view" id="view-terms">
-                <div class="legal-content">
-                    <h2>Términos de Uso</h2>
-                    <p><em>Última actualización: Noviembre 2025</em></p>
-
-                    <h3>1. Aceptación de Términos</h3>
-                    <p>Al utilizar OmniShift, aceptas estos términos de uso. Si no estás de acuerdo, por favor no uses
-                        el servicio.</p>
-
-                    <h3>2. Descripción del Servicio</h3>
-                    <p>OmniShift es una plataforma gratuita de conversión de archivos que funciona 100% en tu navegador.
-                        Ofrecemos herramientas para convertir:</p>
-                    <ul>
-                        <li>Imágenes (JPG, PNG, WEBP, GIF)</li>
-                        <li>Audio (MP3, WAV, AAC, FLAC)</li>
-                        <li>Video (MP4, AVI, MOV, WEBM, MKV)</li>
-                        <li>PDFs (crear, comprimir)</li>
-                        <li>Otras utilidades (ZIP, OCR, Hash)</li>
-                    </ul>
-
-                    <h3>3. Uso Aceptable</h3>
-                    <p><strong>Puedes usar OmniShift para:</strong></p>
-                    <ul>
-                        <li>Conversión personal de archivos</li>
-                        <li>Proyectos comerciales legítimos</li>
-                        <li>Uso educativo</li>
-                    </ul>
-
-                    <p><strong>NO puedes:</strong></p>
-                    <ul>
-                        <li>Intentar sobrecargar o hackear el servicio</li>
-                        <li>Usar para distribuir contenido ilegal</li>
-                        <li>Violar derechos de autor con contenido protegido</li>
-                        <li>Revender o redistribuir el servicio</li>
-                    </ul>
-
-                    <h3>4. Limitaciones del Servicio</h3>
-                    <p><strong>El servicio se proporciona "tal cual".</strong> No garantizamos:</p>
-                    <ul>
-                        <li>Disponibilidad 100% del tiempo</li>
-                        <li>Compatibilidad con todos los archivos</li>
-                        <li>Resultados perfectos en todas las conversiones</li>
-                    </ul>
-
-                    <h3>5. Limitación de Responsabilidad</h3>
-                    <p>OmniShift NO es responsable por:</p>
-                    <ul>
-                        <li>Pérdida de archivos o datos</li>
-                        <li>Errores en conversiones</li>
-                        <li>Daños indirectos o consecuenciales</li>
-                    </ul>
-                    <p><strong>Recomendación:</strong> Siempre mantén copias de tus archivos originales.</p>
-
-                    <h3>6. Propiedad Intelectual</h3>
-                    <p>OmniShift y su código son propiedad de sus creadores. Las librerías de terceros (FFmpeg,
-                        Tesseract, etc.) mantienen sus propias licencias.</p>
-
-                    <h3>7. Modificaciones</h3>
-                    <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán
-                        efectivos al publicarse en esta página.</p>
-
-                    <h3>8. Contacto</h3>
-                    <p>Para preguntas sobre estos términos: <strong>legal@omnishift.app</strong></p>
-            
-        
+                <!-- Tool Container -->
+                <div id="tool-container" class="tool-container">
 
 
 
-    
+                    <!-- VIEW: Terms -->
+                    <div class="tool-view" id="view-terms">
+                        <div class="legal-content">
+                            <h2>Términos de Uso</h2>
+                            <p><em>Última actualización: Noviembre 2025</em></p>
 
-        <!-- Settings Modal -->
-        <div id="settings-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Ajustes</h3>
-                    <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
-            
-                <div class="modal-body">
-                    <div class="setting-item">
-                        <label>Idioma / Language</label>
-                        <select id="language-select" class="select-neon">
-                            <option value="es">Español</option>
-                            <option value="en">English</option>
-                        </select>
-                
-            
-        
-    
+                            <h3>1. Aceptación de Términos</h3>
+                            <p>Al utilizar OmniShift, aceptas estos términos de uso. Si no estás de acuerdo, por favor
+                                no uses
+                                el servicio.</p>
 
-        <!-- Ad Banner Bottom -->
-        <div class="ad-placeholder ad-banner-bottom" title="Anuncio Banner Inferior">
-            <span>Espacio Publicitario</span>
-    
+                            <h3>2. Descripción del Servicio</h3>
+                            <p>OmniShift es una plataforma gratuita de conversión de archivos que funciona 100% en tu
+                                navegador.
+                                Ofrecemos herramientas para convertir:</p>
+                            <ul>
+                                <li>Imágenes (JPG, PNG, WEBP, GIF)</li>
+                                <li>Audio (MP3, WAV, AAC, FLAC)</li>
+                                <li>Video (MP4, AVI, MOV, WEBM, MKV)</li>
+                                <li>PDFs (crear, comprimir)</li>
+                                <li>Otras utilidades (ZIP, OCR, Hash)</li>
+                            </ul>
 
-        <footer class="main-footer">
-            <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
-            <div class="footer-links">
-                <a href="privacy.html" id="link-privacy">Privacidad</a>
-                <a href="terms.html" id="link-terms">Términos</a>
-                <a href="contact.html" id="link-contact">Contacto</a>
-        
-        </footer>
-    </main>
+                            <h3>3. Uso Aceptable</h3>
+                            <p><strong>Puedes usar OmniShift para:</strong></p>
+                            <ul>
+                                <li>Conversión personal de archivos</li>
+                                <li>Proyectos comerciales legítimos</li>
+                                <li>Uso educativo</li>
+                            </ul>
+
+                            <p><strong>NO puedes:</strong></p>
+                            <ul>
+                                <li>Intentar sobrecargar o hackear el servicio</li>
+                                <li>Usar para distribuir contenido ilegal</li>
+                                <li>Violar derechos de autor con contenido protegido</li>
+                                <li>Revender o redistribuir el servicio</li>
+                            </ul>
+
+                            <h3>4. Limitaciones del Servicio</h3>
+                            <p><strong>El servicio se proporciona "tal cual".</strong> No garantizamos:</p>
+                            <ul>
+                                <li>Disponibilidad 100% del tiempo</li>
+                                <li>Compatibilidad con todos los archivos</li>
+                                <li>Resultados perfectos en todas las conversiones</li>
+                            </ul>
+
+                            <h3>5. Limitación de Responsabilidad</h3>
+                            <p>OmniShift NO es responsable por:</p>
+                            <ul>
+                                <li>Pérdida de archivos o datos</li>
+                                <li>Errores en conversiones</li>
+                                <li>Daños indirectos o consecuenciales</li>
+                            </ul>
+                            <p><strong>Recomendación:</strong> Siempre mantén copias de tus archivos originales.</p>
+
+                            <h3>6. Propiedad Intelectual</h3>
+                            <p>OmniShift y su código son propiedad de sus creadores. Las librerías de terceros (FFmpeg,
+                                Tesseract, etc.) mantienen sus propias licencias.</p>
+
+                            <h3>7. Modificaciones</h3>
+                            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios
+                                serán
+                                efectivos al publicarse en esta página.</p>
+
+                            <h3>8. Contacto</h3>
+                            <p>Para preguntas sobre estos términos: <strong>legal@omnishift.app</strong></p>
 
 
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+
+
+
+
+
+                            <!-- Settings Modal -->
+                            <div id="settings-modal" class="modal hidden">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3>Ajustes</h3>
+                                        <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
+
+                                        <div class="modal-body">
+                                            <div class="setting-item">
+                                                <label>Idioma / Language</label>
+                                                <select id="language-select" class="select-neon">
+                                                    <option value="es">Español</option>
+                                                    <option value="en">English</option>
+                                                </select>
+
+
+
+
+
+                                                <!-- Ad Banner Bottom -->
+                                                <div class="ad-placeholder ad-banner-bottom"
+                                                    title="Anuncio Banner Inferior">
+                                                    <span>Espacio Publicitario</span>
+
+
+                                                    <footer class="main-footer">
+                                                        <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
+                                                        <div class="footer-links">
+                                                            <a href="privacy.html" id="link-privacy">Privacidad</a>
+                                                            <a href="terms.html" id="link-terms">Términos</a>
+                                                            <a href="contact.html" id="link-contact">Contacto</a>
+
+                                                    </footer>
+        </main>
+
+
+        <script src="translations.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

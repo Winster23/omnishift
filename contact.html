@@ -35,8 +35,8 @@
     <div class="app-layout">
         <!-- Sidebar Menu -->
         <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo">
+            <div class="logo">
+                <div class="logo-icon">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 2L2 9L16 16L30 9L16 2Z" stroke="#8B5CF6" stroke-width="2"
                             stroke-linejoin="round" />
@@ -46,8 +46,8 @@
                         <path d="M16 16V30" stroke="white" stroke-width="2" stroke-linejoin="round" />
                     </svg>
                     <span>OmniShift</span>
-            
-        
+                </div>
+            </div>
 
             <nav class="menu">
                 <h3 data-i18n="menu_cat_converter">Conversor</h3>
@@ -59,7 +59,7 @@
                     Audio</a>
                 <a href="video.html" class="menu-item" data-i18n="menu_video"><i class="ph ph-film-strip"></i> Video</a>
 
-        <div class="menu-category">
+                <div class="menu-category">
                     <h3 data-i18n="menu_cat_pdf">Herramientas PDF</h3>
                     <a href="pdf-create.html" class="menu-item" data-i18n="menu_pdf_create"><i
                             class="ph ph-file-pdf"></i> Web/Img a
@@ -67,135 +67,142 @@
                     <a href="pdf-compress.html" class="menu-item" data-i18n="menu_pdf_compress"><i
                             class="ph ph-file-zip"></i>
                         Comprimir PDF</a>
-            
 
 
 
-    <div class="menu-category">
-        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
-        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear ZIP</a>
-        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
-            (Img a Texto)</a>
-        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
-            Generador Hash</a>
 
-    </nav>
+                    <div class="menu-category">
+                        <h3 data-i18n="menu_cat_utils">Utilidades</h3>
+                        <a href="zip.html" class="menu-item" data-i18n="menu_zip"><i class="ph ph-archive"></i> Crear
+                            ZIP</a>
+                        <a href="ocr.html" class="menu-item" data-i18n="menu_ocr"><i class="ph ph-scan"></i> OCR
+                            (Img a Texto)</a>
+                        <a href="hash.html" class="menu-item" data-i18n="menu_hash"><i class="ph ph-hash"></i>
+                            Generador Hash</a>
 
-    <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
-        <span>Anuncio</span>
+            </nav>
 
-    </aside>
+            <div class="ad-placeholder ad-sidebar" title="Anuncio Sidebar">
+                <span>Anuncio</span>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Header -->
-        <header class="top-header">
-            <div class="mobile-menu-toggle">
-                <i class="ph ph-list"></i>
-        
-            <h1>Conversor Universal</h1>
-            <div class="header-actions">
-                <button class="btn-icon"><i class="ph ph-gear"></i></button>
-        
-        </header>
+        </aside>
 
-        <!-- Ad Banner Top -->
-        <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
-            <span>Espacio Publicitario</span>
-    
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="mobile-menu-toggle">
+                    <i class="ph ph-list"></i>
 
-        <!-- Tool Container -->
-        <div id="tool-container" class="tool-container">
+                    <h1>Conversor Universal</h1>
+                    <div class="header-actions">
+                        <button class="btn-icon"><i class="ph ph-gear"></i></button>
+
+            </header>
+
+            <!-- Ad Banner Top -->
+            <div class="ad-placeholder ad-banner-top" title="Anuncio Banner Superior">
+                <span>Espacio Publicitario</span>
 
 
-
-            <!-- VIEW: Contact -->
-            <div class="tool-view" id="view-contact">
-                <div class="legal-content">
-                    <h2>Contacto</h2>
-
-                    <h3>📧 Soporte Técnico</h3>
-                    <p><strong>Email:</strong> <a href="mailto:soporte@omnishift.app">soporte@omnishift.app</a></p>
-                    <p><strong>Tiempo de respuesta:</strong> 24-48 horas hábiles</p>
-
-                    <h3>💼 Asuntos legales y privacidad</h3>
-                    <p><strong>Legal:</strong> <a href="mailto:legal@omnishift.app">legal@omnishift.app</a></p>
-                    <p><strong>Privacidad:</strong> <a href="mailto:privacy@omnishift.app">privacy@omnishift.app</a></p>
-
-                    <h3>❓ Preguntas Frecuentes</h3>
-
-                    <h4>¿Mis archivos son privados?</h4>
-                    <p>Sí, 100%. Todo se procesa localmente en tu navegador. Nunca subimos archivos a servidores.</p>
-
-                    <h4>¿Por qué la conversión de audio/video tarda?</h4>
-                    <p>La primera conversión descarga FFmpeg (~30MB). Las siguientes son más rápidas.</p>
-
-                    <h4>¿Tienen límite de tamaño de archivo?</h4>
-                    <p>Los límites dependen de la memoria de tu navegador. Archivos muy grandes (>500MB) pueden fallar.
-                    </p>
-
-                    <h4>¿Puedo usar OmniShift sin internet?</h4>
-                    <p>Necesitas internet para cargar la página inicialmente. Después, algunas conversiones funcionan
-                        offline si las librerías ya están cacheadas.</p>
-
-                    <h4>¿Es gratis?</h4>
-                    <p>Sí, completamente gratis. Nos financiamos con anuncios no invasivos.</p>
-
-                    <h3>🐛 Reportar un bug</h3>
-                    <p>Si encuentras un error, envíanos:</p>
-                    <ul>
-                        <li>Descripción del problema</li>
-                        <li>Navegador y versión</li>
-                        <li>Tipo de archivo que intentabas convertir</li>
-                        <li>Captura de pantalla del error (si aplica)</li>
-                    </ul>
-                    <p>A: <a href="mailto:bugs@omnishift.app">bugs@omnishift.app</a></p>
-
-                    <h3>💡 Sugerencias</h3>
-                    <p>¿Tienes ideas para mejorar OmniShift?</p>
-                    <p>Envía tus sugerencias a: <a href="mailto:ideas@omnishift.app">ideas@omnishift.app</a></p>
-            
-        
-
-    
-
-        <!-- Settings Modal -->
-        <div id="settings-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Ajustes</h3>
-                    <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
-            
-                <div class="modal-body">
-                    <div class="setting-item">
-                        <label>Idioma / Language</label>
-                        <select id="language-select" class="select-neon">
-                            <option value="es">Español</option>
-                            <option value="en">English</option>
-                        </select>
-                
-            
-        
-    
-
-        <!-- Ad Banner Bottom -->
-        <div class="ad-placeholder ad-banner-bottom" title="Anuncio Banner Inferior">
-            <span>Espacio Publicitario</span>
-    
-
-        <footer class="main-footer">
-            <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
-            <div class="footer-links">
-                <a href="privacy.html" id="link-privacy">Privacidad</a>
-                <a href="terms.html" id="link-terms">Términos</a>
-                <a href="contact.html" id="link-contact">Contacto</a>
-        
-        </footer>
-    </main>
+                <!-- Tool Container -->
+                <div id="tool-container" class="tool-container">
 
 
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+
+                    <!-- VIEW: Contact -->
+                    <div class="tool-view" id="view-contact">
+                        <div class="legal-content">
+                            <h2>Contacto</h2>
+
+                            <h3>📧 Soporte Técnico</h3>
+                            <p><strong>Email:</strong> <a href="mailto:soporte@omnishift.app">soporte@omnishift.app</a>
+                            </p>
+                            <p><strong>Tiempo de respuesta:</strong> 24-48 horas hábiles</p>
+
+                            <h3>💼 Asuntos legales y privacidad</h3>
+                            <p><strong>Legal:</strong> <a href="mailto:legal@omnishift.app">legal@omnishift.app</a></p>
+                            <p><strong>Privacidad:</strong> <a
+                                    href="mailto:privacy@omnishift.app">privacy@omnishift.app</a></p>
+
+                            <h3>❓ Preguntas Frecuentes</h3>
+
+                            <h4>¿Mis archivos son privados?</h4>
+                            <p>Sí, 100%. Todo se procesa localmente en tu navegador. Nunca subimos archivos a
+                                servidores.</p>
+
+                            <h4>¿Por qué la conversión de audio/video tarda?</h4>
+                            <p>La primera conversión descarga FFmpeg (~30MB). Las siguientes son más rápidas.</p>
+
+                            <h4>¿Tienen límite de tamaño de archivo?</h4>
+                            <p>Los límites dependen de la memoria de tu navegador. Archivos muy grandes (>500MB) pueden
+                                fallar.
+                            </p>
+
+                            <h4>¿Puedo usar OmniShift sin internet?</h4>
+                            <p>Necesitas internet para cargar la página inicialmente. Después, algunas conversiones
+                                funcionan
+                                offline si las librerías ya están cacheadas.</p>
+
+                            <h4>¿Es gratis?</h4>
+                            <p>Sí, completamente gratis. Nos financiamos con anuncios no invasivos.</p>
+
+                            <h3>🐛 Reportar un bug</h3>
+                            <p>Si encuentras un error, envíanos:</p>
+                            <ul>
+                                <li>Descripción del problema</li>
+                                <li>Navegador y versión</li>
+                                <li>Tipo de archivo que intentabas convertir</li>
+                                <li>Captura de pantalla del error (si aplica)</li>
+                            </ul>
+                            <p>A: <a href="mailto:bugs@omnishift.app">bugs@omnishift.app</a></p>
+
+                            <h3>💡 Sugerencias</h3>
+                            <p>¿Tienes ideas para mejorar OmniShift?</p>
+                            <p>Envía tus sugerencias a: <a href="mailto:ideas@omnishift.app">ideas@omnishift.app</a></p>
+
+
+
+
+
+                            <!-- Settings Modal -->
+                            <div id="settings-modal" class="modal hidden">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3>Ajustes</h3>
+                                        <button id="close-settings" class="btn-icon-sm"><i class="ph ph-x"></i></button>
+
+                                        <div class="modal-body">
+                                            <div class="setting-item">
+                                                <label>Idioma / Language</label>
+                                                <select id="language-select" class="select-neon">
+                                                    <option value="es">Español</option>
+                                                    <option value="en">English</option>
+                                                </select>
+
+
+
+
+
+                                                <!-- Ad Banner Bottom -->
+                                                <div class="ad-placeholder ad-banner-bottom"
+                                                    title="Anuncio Banner Inferior">
+                                                    <span>Espacio Publicitario</span>
+
+
+                                                    <footer class="main-footer">
+                                                        <p>&copy; 2025 OmniShift. Privacidad y Seguridad primero.</p>
+                                                        <div class="footer-links">
+                                                            <a href="privacy.html" id="link-privacy">Privacidad</a>
+                                                            <a href="terms.html" id="link-terms">Términos</a>
+                                                            <a href="contact.html" id="link-contact">Contacto</a>
+
+                                                    </footer>
+        </main>
+
+
+        <script src="translations.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
